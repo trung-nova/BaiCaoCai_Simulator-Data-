@@ -44,10 +44,16 @@ Chạy file `game_sql.exe`. Hệ thống sẽ cung cấp 4 chế độ chính:
 
 ### Bước 3: Thiết lập thông số chạy
 Sau khi chọn chế độ (ví dụ Mode 1), bạn sẽ nhập:
-- **Số lượng người chơi**: 2 - 17.
-- **Kỹ năng (Skill)**: Min/Max và độ tập trung (Concentration).
-- **Tỉ lệ Archetype**: Bao nhiêu % là Shark, Maniac, Nit.
-- **Số ván đấu (Rounds)**: Nhập số lượng ván muốn mô phỏng.
+- **Tổng số người chơi (Total Players)**: Số lượng người tham gia ván bài (từ 2 đến 17).
+- **Số lượng cụ thể từng nhóm (Archetype Counts)**: Lần lượt nhập số lượng người chơi thuộc nhóm Fish, Maniac, Nit, Other, Shark. Tổng số lượng nhập vào phải bằng "Tổng số người chơi" ở trên.
+- **Tính năng Auto Export**: Chọn (y/n) để tự động xuất dữ liệu sau khi kết thúc.
+- **Số ván đấu (Rounds)**: Nhập số lượng ván muốn mô phỏng liên tục.
+
+### Bước 4: Tự động hóa với Batch Script (Mới)
+Hệ thống cung cấp các file script `.bat` để chạy mô phỏng tự động theo kịch bản:
+- `generate_data.bat`: Chạy tự động hàng loạt các kịch bản với đủ loại đội hình (đồng nhất, cặp đối kháng, hỗn hợp) liên tục.
+- `test_automation.bat`: Chạy kiểm tra nhanh 1 kịch bản 5 ván.
+- `test_mixed.bat`: Chạy cấu hình hỗn hợp các Archetype để kiểm tra.
 
 ---
 

@@ -33,7 +33,7 @@ Chạy file `game.exe`. Dữ liệu sẽ được sinh ra trong thư mục `data
 Hệ thống tập trung xuất dữ liệu ra định dạng CSV để đảm bảo tính minh bạch và dễ dàng phân tích bằng Python (Pandas) hoặc Excel.
 
 ### 3.1. Danh mục các file báo cáo
-Mỗi phiên chạy sẽ sinh ra bộ 4 file với timestamp:
+Mỗi phiên chạy sẽ sinh ra bộ 4 file với định dạng tên `[Mode]_[Timestamp_ms]_[TênFile].csv` (ví dụ `1.1_20260519_121008_123_ai_configs.csv`):
 
 1.  **`_ai_configs.csv`**: Lưu trữ hồ sơ tâm lý của từng AI (Skill, Confidence, Archetype).
 2.  **`_rounds_summary.csv`**: Chi tiết kết quả từng ván đấu (Nhà cái, Tổng tiền, Số người thắng, Điểm số).

@@ -9,6 +9,7 @@ Tài liệu này là bản đặc tả kỹ thuật đầy đủ nhất về m�
 Đây là file quan trọng nhất, lưu trữ "nhật ký tư duy" của AI qua từng lượt đổi bài.
 
 ### 1.1. Các tham số định danh (Identifiers)
+- **SessionPrefix**: Tên file CSV nay được gắn tiền tố (ví dụ `1.1_`, `3.0_`) kèm theo Timestamp chi tiết đến mili-giây (milliseconds) để tránh hiện tượng ghi đè file khi chạy tự động hóa hàng loạt bằng Batch Script.
 - **Batch**: Mã định danh của đợt chạy (chỉ có ở Mode 3). Mỗi Batch đại diện cho một tổ hợp Archetype và Hạt giống khác nhau.
 - **RoundID**: Số thứ tự ván bài trong một Batch.
 - **PlayerName**: Tên định danh của người chơi (ví dụ: `AI_1`, `AI_2`).
