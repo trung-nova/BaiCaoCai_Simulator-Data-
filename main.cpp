@@ -58,10 +58,14 @@ SimParams getParams(bool isInter, const std::map<std::string, ArchetypeConfig>& 
     int remaining = aiNeeded;
     
     for (auto const& [name, cfg] : configs) {
-        if (remaining <= 0) break;
         int count = safeInput<int>("Number of " + name + " (Max " + std::to_string(remaining) + "): ", 0, remaining);
+        if (remaining > 0) {
+            remaining -= count;
+        } else {
+            // If already full, ensure we don't accidentally assign a count if the user somehow bypassed validation
+            count = 0; 
+        }
         p.archCounts[name] = count;
-        remaining -= count;
     }
 
     if (remaining > 0) {
@@ -98,6 +102,7 @@ int main() {
     if (choice == 1 || choice == 2 || choice == 4) {
       bool isInter = (choice == 2), isLog = (choice == 4);
       int subMode = 1; if (choice == 1) subMode = safeInput<int>("1. Persistent | 2. Reset\nSelection: ", 1, 2);
+      manager.sessionPrefix = std::to_string(choice) + "." + std::to_string(subMode) + "_";
       SimParams p = getParams(isInter, manager.archetypeConfigs);
       manager.displayArchetypeConfigs();
       std::vector<std::shared_ptr<Player>> players;
@@ -168,6 +173,7 @@ int main() {
         std::cout << "\n1. Run more | 2. Menu\nSelection: "; if (safeInput<int>("", 1, 2) == 2) simActive = false;
       }
     } else if (choice == 3) {
+      manager.sessionPrefix = "3.0_";
       int batches = safeInput<int>("Number of batches: ", 1, 1000);
       std::cout << "Enable Data Export? (y/n): "; char exT; std::cin >> exT; 
       manager.autoExport = (exT == 'y' || exT == 'Y');

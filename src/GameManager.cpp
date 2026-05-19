@@ -64,6 +64,7 @@ void GameManager::playRound() {
 }
 
 void GameManager::startStreaming() {
+    currentSessionTS = sessionPrefix + getTimestamp();
     streamSwap.open("data/" + currentSessionTS + "_swap_decisions.csv");
     streamRound.open("data/" + currentSessionTS + "_rounds_summary.csv");
     streamHistory.open("data/" + currentSessionTS + "_bankroll_history.csv");
@@ -96,11 +97,16 @@ void GameManager::stopStreaming() {
 
 std::string GameManager::getTimestamp() {
     auto now = std::chrono::system_clock::now();
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()) % 1000;
     std::time_t now_c = std::chrono::system_clock::to_time_t(now);
     struct tm *parts = std::localtime(&now_c);
-    char buf[20];
+    char buf[32];
     std::strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", parts);
-    return std::string(buf);
+    
+    std::string ts(buf);
+    char ms_buf[8];
+    std::snprintf(ms_buf, sizeof(ms_buf), "_%03d", (int)ms.count());
+    return ts + ms_buf;
 }
 
 void GameManager::logAIConfigs() {

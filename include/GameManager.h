@@ -69,6 +69,7 @@ public:
     std::string simulationParams;
     long long simulationSeed = -1;
     bool enableTilt = true;
+    std::string sessionPrefix = "";
     std::vector<int> initialBalances;
     void initRNG(); // Initialize RNG with simulationSeed if >= 0
 
